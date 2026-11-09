@@ -1,0 +1,81 @@
+{
+  "title": "16-Bit Multiplier AXI-Lite IP",
+  "ip_name": "mult_16_bit",
+  "data_width": 32,
+  "intro": "Multiplies two 16-bit unsigned operands and returns the 32-bit product over an AXI4-Lite interface.",
+  "access_types": {
+    "RW": "Read/write",
+    "RO": "Read-only",
+    "WO": "Write-only (self-clearing, reads return 0)"
+  },
+  "registers": [
+    {
+      "name": "Operand A Register",
+      "short_name": "A_REG",
+      "offset": "0x00",
+      "alias": "slv_reg0",
+      "fields":
+      [
+        { "name": "A",
+          "bits": "[15:0]",
+          "access": "RW",
+          "reset": "0x0000",
+          "description": "Multiplier operand A (unsigned)."
+        }
+      ]
+    },
+    {
+      "name": "Operand B Register",
+      "short_name": "B_REG",
+      "offset": "0x04",
+      "alias": "slv_reg1",
+      "fields":
+      [
+        { "name": "B",
+          "bits": "[15:0]",
+          "access": "RW",
+          "reset": "0x0000",
+          "description": "Multiplier operand B (unsigned)."
+        }
+      ]
+    },
+    {
+      "name": "Product Register",
+      "short_name": "PROD_REG",
+      "offset": "0x08",
+      "alias": "slv_reg2",
+      "fields":
+      [
+        { "name": "PRODUCT",
+          "bits": "[31:0]",
+          "access": "RO",
+          "reset": "0x0000_0000",
+          "description": "A x B. Valid 3 clocks after A or B changes. Writes are ignored."
+        }
+      ]
+    },
+    {
+      "name": "Control Register",
+      "short_name": "CTRL_REG",
+      "offset": "0x0C",
+      "alias": "slv_reg3",
+      "fields":
+      [
+        { "name": "CLEAR",
+          "bits": "[0]",
+          "access": "WO",
+          "reset": "0",
+          "description": "Writing 1 clears A_REG and B_REG. Self-clears after one clock and reads as 0."
+        }
+      ]
+    },
+    {
+      "type": "reserved",
+      "name": "Reserved",
+      "alias": "slv_reg4 – slv_reg15",
+      "offset": "0x10",
+      "offset_end": "0x3C",
+      "description": "Unused. Read/write with no function."
+    }
+  ]
+}
