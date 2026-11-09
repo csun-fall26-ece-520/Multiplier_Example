@@ -1,0 +1,14 @@
+# ModelSim / Questa
+work
+transcript
+*.wlf
+*.mti
+*.mpf
+
+# Python (regmap_gen.py)
+__pycache__/
+*.pyc
+
+# Generated register maps (regmap_gen.py writes <design_name>_register_map.html).
+# Uncomment to treat them as build output rebuilt from the JSON instead of committed.
+multiplier/docs/*_register_map.html
